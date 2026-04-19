@@ -3,10 +3,6 @@ const STORAGE_KEYS = {
   adminAuth: "flashfesta_admin_auth_v1",
 };
 
-const ADMIN_CREDENTIALS = {
-  username: "admin",
-  password: "flashfesta2026",
-};
 
 const refs = {
   app: document.getElementById("admin-app"),
