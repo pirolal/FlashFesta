@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flash Festa</title>
+	<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+	<div class="page-shell">
+		<header class="hero">
+			<div class="hero-copy">
+				<p class="eyebrow">Sagra / Flash Festa</p>
+				<h2>La tua festa, alla velocità della luce</h2>
+				<p>
+					<a class="orders-link" href="ordini.html">Apri dashboard ordini</a>
+					<a class="orders-link" href="admin.html">Apri admin sagra</a>
+				</p>
+			</div>
+		</header>
+
+		<main class="layout">
+			<section class="catalogue-card">
+				<div class="section-head">
+					<div>
+						<h2>Menù Sagra 2025</h2>
+						<div class="filters" aria-label="Filtra per categoria">
+							<button class="filter active" type="button" data-filter="all">Tutti</button>
+							<button class="filter" type="button" data-filter="pizze">Pizze</button>
+							<button class="filter" type="button" data-filter="cucina">Cucina</button>
+							<button class="filter" type="button" data-filter="bevande">Bevande</button>
+							<button class="filter" type="button" data-filter="gelati">Gelati</button>
+						</div>
+					</div>
+				</div>
+
+				<div id="menu-groups" class="menu-groups"></div>
+			</section>
+
+			<aside class="receipt-card">
+				<div class="receipt-top">
+					<p class="receipt-brand">Parrocchia di Sombreno</p>
+					<h2 class="ticket-title">Sagra di Sombreno</h2>
+					<p class="receipt-meta">Ordine N. <span id="order-number">1</span></p>
+					<p class="receipt-meta">Cliente: <span id="receipt-customer">-</span></p>
+					<p class="receipt-meta">Data e ora: <span id="receipt-date"></span></p>
+				</div>
+
+				<div class="receipt-fields">
+					<label>
+						<span>Nominativo</span>
+						<input id="customer-first-name" type="text" placeholder="Nome">
+					</label>
+				</div>
+
+				<div class="receipt-lines" id="receipt-lines"></div>
+
+				<div class="receipt-summary">
+					<div class="summary-items">
+						<span>Articoli</span>
+						<strong id="receipt-count">0</strong>
+					</div>
+					<div class="summary-total">
+						<span>Totale</span>
+						<strong id="receipt-total">0,00 €</strong>
+					</div>
+				</div>
+
+				<div class="receipt-payment">
+					<label>
+						<span>Importo pagato</span>
+						<input id="cash-input" type="number" min="0" step="0.01" placeholder="0,00">
+					</label>
+					<div class="change-box">
+						<span>Resto</span>
+						<strong id="change-value">0,00 €</strong>
+					</div>
+				</div>
+
+				<div class="receipt-actions">
+					<button class="item-button compact" data-action="save-order">Salva ordine</button>
+					<button class="item-button compact secondary" data-action="reset-evening">Chiudi serata e azzera</button>
+				</div>
+			</aside>
+		</main>
+	</div>
+
+	<section id="print-category-tickets" class="print-category-tickets" aria-hidden="true"></section>
+
+	<dialog id="ingredient-dialog" class="ingredient-dialog">
+		<div class="ingredient-panel">
+			<div class="ingredient-head">
+				<div>
+					<p class="section-label">Personalizza pizza</p>
+					<h3 id="ingredient-title"></h3>
+				</div>
+				<button type="button" class="icon-button" data-action="close-ingredient-dialog">x</button>
+			</div>
+			<div class="ingredient-columns">
+				<div>
+					<p class="ingredient-subtitle">Ingredienti da togliere</p>
+					<div id="ingredient-remove-list" class="chip-list"></div>
+				</div>
+				<div>
+					<p class="ingredient-subtitle">Ingredienti extra scritti a mano (+0,50 cad.)</p>
+					<div id="ingredient-notes" class="ingredient-notes"></div>
+				</div>
+			</div>
+			<div class="ingredient-actions">
+				<button type="button" class="secondary" data-action="clear-ingredient-selection">Pulisci selezione</button>
+				<button type="button" class="primary" data-action="save-ingredients">Salva ingredienti</button>
+			</div>
+			<p id="save-status" class="save-status"></p>
+		</div>
+	</dialog>
+
+	<script src="script.js"></script>
+</body>
+</html>

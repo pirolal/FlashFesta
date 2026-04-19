@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Sagra | Flash Festa</title>
+	<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+	<div class="page-shell">
+		<section id="admin-login-view" class="saved-orders-card admin-login-card">
+			<div class="section-head">
+				<div>
+					<p class="section-label">Accesso Admin</p>
+					<h2>Login sezione admin</h2>
+				</div>
+			</div>
+			<form id="admin-login-form" class="admin-login-form" autocomplete="off">
+				<label>
+					<span>Username</span>
+					<input id="admin-username" type="text" required>
+				</label>
+				<label>
+					<span>Password</span>
+					<input id="admin-password" type="password" required>
+				</label>
+				<div class="admin-actions">
+					<button type="submit" class="item-button compact">Entra</button>
+					<a class="orders-link" href="index.html">Torna alla cassa</a>
+				</div>
+				<p id="admin-login-error" class="save-status"></p>
+			</form>
+		</section>
+
+		<div id="admin-app" class="is-hidden">
+			<header class="hero">
+				<div class="hero-copy">
+					<p class="eyebrow">Flash Festa / Admin</p>
+					<h2>Andamento serate e totale sagra</h2>
+					<p>
+						<a class="orders-link" href="index.html">Torna alla cassa</a>
+						<a class="orders-link" href="ordini.html">Dashboard ordini</a>
+					</p>
+				</div>
+			</header>
+
+			<section class="saved-orders-card admin-summary-card">
+				<div class="admin-kpi-grid">
+					<article class="panel-stat">
+						<span>Totale sagra</span>
+						<strong id="festival-total">0,00 €</strong>
+					</article>
+					<article class="panel-stat">
+						<span>Serate chiuse</span>
+						<strong id="evenings-count">0</strong>
+					</article>
+					<article class="panel-stat">
+						<span>Serata in corso</span>
+						<strong id="current-evening-total">0,00 €</strong>
+					</article>
+					<article class="panel-stat">
+						<span>Ordini in corso</span>
+						<strong id="current-evening-orders">0</strong>
+					</article>
+				</div>
+
+				<div class="admin-actions">
+					<button class="item-button compact secondary" id="reload-admin">Aggiorna dati</button>
+					<button class="item-button compact" id="reset-festival">Fine sagra</button>
+					<button class="item-button compact secondary" id="logout-admin">Esci</button>
+				</div>
+				<p id="admin-status" class="save-status"></p>
+			</section>
+
+			<section class="saved-orders-card admin-chart-card">
+				<div class="section-head saved-head">
+					<div>
+						<p class="section-label">Grafico</p>
+						<h2>Andamento incassi per serata</h2>
+					</div>
+				</div>
+				<canvas id="evening-chart" class="admin-chart" width="1200" height="360" aria-label="Grafico andamento serate"></canvas>
+			</section>
+
+			<section class="saved-orders-card admin-table-card">
+				<div class="section-head saved-head">
+					<div>
+						<p class="section-label">Dettaglio</p>
+						<h2>Storico serate</h2>
+					</div>
+				</div>
+				<div id="evening-list" class="admin-evening-list"></div>
+			</section>
+		</div>
+	</div>
+
+	<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+[
+  {
+    "id": "61d09f8b-1895-496a-a357-b2ea153e897d",
+    "orderNumber": 6,
+    "customerFirstName": "giuseppe",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -42.5,
+    "total": 42.5,
+    "createdAt": "2026-04-17T23:30:53.314Z",
+    "lines": [
+      {
+        "id": "ff863e31-4cee-456b-b71e-b8723f85bd71",
+        "itemId": "verdure",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "b7adaea5-a686-4b8b-9d46-af1fb4c1c648",
+        "itemId": "romana",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "bfb76c57-1333-4ee2-a594-6ca8482f9355",
+        "itemId": "margherita",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "60ae6dc2-ba46-4272-88ce-caae4100ce11",
+        "itemId": "della-sagra",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "e002517b-3fb5-440a-bded-6c65f2c99aa4",
+        "itemId": "prosciutto-funghi",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "ffbfb1e0-804e-4676-bece-b2cd5d077291",
+        "itemId": "lattine",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "cf9eea8f-b09a-4be8-ad47-3d2b24ed8449",
+        "itemId": "birra",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "0a2dc4bc-e91c-4f9d-8eef-57f52bdf6737",
+    "orderNumber": 5,
+    "customerFirstName": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -44,
+    "total": 44,
+    "createdAt": "2026-04-17T23:23:10.649Z",
+    "lines": [
+      {
+        "id": "035e06c4-ee59-44ea-8881-3adeaa2ad597",
+        "itemId": "vino-calice",
+        "quantity": 2,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "89504236-496c-4d78-a1eb-efa60462b187",
+        "itemId": "zucchine",
+        "quantity": 2,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "59eac0ca-229d-40df-a01b-de12d9e1ef2a",
+        "itemId": "salamino-piccante",
+        "quantity": 2,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "e3f0d33e-1248-4ab5-8a3f-c893f1ea69bd",
+        "itemId": "margherita-doppia",
+        "quantity": 2,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "2ec6b77f-22ea-4284-ab8b-237329f2c8f6",
+    "orderNumber": 4,
+    "customerFirstName": "mario",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -38,
+    "total": 38,
+    "createdAt": "2026-04-17T23:20:33.826Z",
+    "lines": [
+      {
+        "id": "06fc3571-c0ac-4fc1-bb89-39e8ad25fc17",
+        "itemId": "zucchine",
+        "quantity": 2,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "8d18d0b7-3108-41b7-a58b-d211260fcd3b",
+        "itemId": "vino-calice",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "5fdc7827-a309-42e1-9b4a-30bda0e3947f",
+        "itemId": "verdure",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "d6d5e201-74ac-4857-ae65-7a07fa5b1efa",
+        "itemId": "romana",
+        "quantity": 2,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "bd4c14b4-7281-4711-89ab-823581e80adb",
+    "orderNumber": 3,
+    "customerFirstName": "luca",
+    "customerLastName": "",
+    "cashReceived": 20,
+    "change": 12,
+    "total": 8,
+    "createdAt": "2026-04-17T23:16:01.821Z",
+    "lines": [
+      {
+        "id": "ce819751-4ebd-4a1d-b337-9b520d6e9d49",
+        "itemId": "saporita",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "16273e5b-28dc-4a2a-90e4-3c51e247f6f6",
+    "orderNumber": 2,
+    "customerFirstName": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -8,
+    "total": 8,
+    "createdAt": "2026-04-17T23:15:44.001Z",
+    "lines": [
+      {
+        "id": "5dd03333-af0a-48c5-a516-ffafcef98f72",
+        "itemId": "4-stagioni",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "d94aec38-d3ac-4b8f-a1f9-e928a81ac617",
+    "orderNumber": 1,
+    "customerFirstName": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -8,
+    "total": 8,
+    "createdAt": "2026-04-17T23:09:01.116Z",
+    "lines": [
+      {
+        "id": "1ba143dc-ab29-433a-975f-38a6c16df6d7",
+        "itemId": "4-stagioni",
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  }
+]

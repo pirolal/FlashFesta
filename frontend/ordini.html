@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Ordini | Flash Festa</title>
+  <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Flash Festa</p>
+        <h2>Dashboard grafica ordini</h2>
+        <p><a class="orders-link" href="index.html">Torna al menu ordini</a></p>
+      </div>
+    </header>
+
+    <section class="saved-orders-card">
+      <div class="section-head saved-head">
+        <div>
+          <p class="section-label">Storico</p>
+          <h2>Ordini salvati</h2>
+        </div>
+        <p class="saved-count" id="orders-count">0 ordini</p>
+      </div>
+      <p id="orders-source" class="note"></p>
+      <div id="orders-grid" class="saved-orders-list"></div>
+    </section>
+  </div>
+
+  <script src="ordini.js"></script>
+</body>
+</html>
