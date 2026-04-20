@@ -316,7 +316,6 @@ function renderMenu() {
     const cards = items.map((item) => `
       <button class="compact-menu-button" type="button" data-action="add-item" data-item-id="${item.id}">
         <span class="compact-menu-label">${item.name}</span>
-        <span class="compact-menu-price">${formatCurrency(item.price)}</span>
       </button>
     `).join("");
 

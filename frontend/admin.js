@@ -3,11 +3,16 @@ const STORAGE_KEYS = {
   adminAuth: "flashfesta_admin_auth_v1",
 };
 
+const ADMIN_CREDENTIALS = {
+  username: "admin",
+  password: "flashfesta2026",
+};
 
 const refs = {
   app: document.getElementById("admin-app"),
   loginView: document.getElementById("admin-login-view"),
   loginForm: document.getElementById("admin-login-form"),
+  loginSubmit: document.getElementById("admin-login-submit"),
   usernameInput: document.getElementById("admin-username"),
   passwordInput: document.getElementById("admin-password"),
   loginError: document.getElementById("admin-login-error"),
@@ -47,13 +52,22 @@ function showApp() {
 }
 
 function checkCredentials(username, password) {
-  return username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password;
+  const normalizedUsername = String(username || "").trim().toLowerCase();
+  const expectedUsername = String(ADMIN_CREDENTIALS.username || "").trim().toLowerCase();
+  const normalizedPassword = String(password || "").trim();
+  return normalizedUsername === expectedUsername && normalizedPassword === ADMIN_CREDENTIALS.password;
 }
 
 function handleLoginSubmit(event) {
-  event.preventDefault();
+  if (event) event.preventDefault();
   const username = String(refs.usernameInput?.value || "").trim();
   const password = String(refs.passwordInput?.value || "");
+
+  if (!username || !password) {
+    if (refs.loginError) refs.loginError.textContent = "Inserisci username e password.";
+    return;
+  }
+
   const ok = checkCredentials(username, password);
 
   if (!ok) {
@@ -287,6 +301,9 @@ function resetFestival() {
 }
 
 if (refs.loginForm) refs.loginForm.addEventListener("submit", handleLoginSubmit);
+if (refs.loginSubmit) {
+  refs.loginSubmit.addEventListener("click", handleLoginSubmit);
+}
 if (refs.reloadButton) refs.reloadButton.addEventListener("click", renderAdmin);
 if (refs.resetFestivalButton) refs.resetFestivalButton.addEventListener("click", resetFestival);
 if (refs.logoutButton) refs.logoutButton.addEventListener("click", logoutAdmin);
