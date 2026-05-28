@@ -5,12 +5,12 @@ const STORAGE_KEYS = {
 };
 
 const API_BASE = "http://127.0.0.1:8000";
-const EXTRA_INGREDIENT_PRICE = 0.5;
+const EXTRA_INGREDIENT_PRICE = 1.0;
 
 const catalog = [
   { id: "americana", name: "Americana", category: "pizze", price: 7.5, note: "Pomodoro, mozzarella, wurstel e patatine.", ingredients: ["pomodoro", "mozzarella", "wurstel", "patatine"] },
-  { id: "capricciosa", name: "Capricciosa", category: "pizze", price: 8.0, note: "Un grande classico.", ingredients: ["pomodoro", "mozzarella", "prosciutto", "funghi", "carciofi", "olive"] },
-  { id: "della-sagra", name: "Della Sagra", category: "pizze", price: 9.0, note: "Salame e branzi.", ingredients: ["pomodoro", "mozzarella", "salame", "branzi"] },
+  { id: "capricciosa", name: "Capricciosa", category: "pizze", price: 8.0, note: "Un grande classico.", ingredients: ["pomodoro", "mozzarella", "prosciutto", "funghi", "carciofi", "olive", "acciughe"] },
+  { id: "della-sagra", name: "Della Sagra", category: "pizze", price: 10.0, note: "Salame e branzi.", ingredients: ["pomodoro", "mozzarella", "salame", "branzi"] },
   { id: "margherita", name: "Margherita", category: "pizze", price: 6.0, note: "La piu amata.", ingredients: ["pomodoro", "mozzarella"] },
   { id: "margherita-doppia", name: "Margherita DP Mozz.", category: "pizze", price: 7.5, note: "Doppia mozzarella.", ingredients: ["pomodoro", "mozzarella"] },
   { id: "napoli", name: "Napoli", category: "pizze", price: 7.5, note: "Acciughe, capperi e olive.", ingredients: ["pomodoro", "mozzarella", "acciughe", "capperi", "olive"] },
@@ -19,17 +19,14 @@ const catalog = [
   { id: "prosciutto-funghi", name: "Prosciutto e Funghi", category: "pizze", price: 8.5, note: "Sempre richiesta.", ingredients: ["pomodoro", "mozzarella", "prosciutto", "funghi"] },
   { id: "romana", name: "Romana", category: "pizze", price: 8.0, note: "Acciughe, capperi, olive e origano.", ingredients: ["pomodoro", "mozzarella", "acciughe", "capperi", "olive", "origano"] },
   { id: "salamino-piccante", name: "Salamino", category: "pizze", price: 8.0, note: "Gusto deciso.", ingredients: ["pomodoro", "mozzarella", "salamino"] },
-  { id: "saporita", name: "Saporita", category: "pizze", price: 8.0, note: "Zola, salamino e cipolle.", ingredients: ["pomodoro", "mozzarella", "zola", "salamino", "cipolle"] },
   { id: "speck", name: "Speck", category: "pizze", price: 8.0, note: "Molto apprezzata.", ingredients: ["pomodoro", "mozzarella", "speck"] },
   { id: "tonno", name: "Tonno", category: "pizze", price: 8.0, note: "Tonno classica.", ingredients: ["pomodoro", "mozzarella", "tonno"] },
   { id: "tonno-cipolle", name: "Tonno e Cipolle", category: "pizze", price: 8.5, note: "Piu saporita.", ingredients: ["pomodoro", "mozzarella", "tonno", "cipolle"] },
   { id: "verdure", name: "Verdure", category: "pizze", price: 8.0, note: "Vegetariana.", ingredients: ["pomodoro", "mozzarella", "verdure"] },
-  { id: "zucchine", name: "Zucchine", category: "pizze", price: 7.0, note: "Delicata.", ingredients: ["pomodoro", "mozzarella", "zucchine"] },
   { id: "4-stagioni", name: "4 Stagioni", category: "pizze", price: 8.0, note: "Completa.", ingredients: ["pomodoro", "mozzarella", "prosciutto", "funghi", "carciofi", "olive"] },
   { id: "4-formaggi", name: "4 Formaggi", category: "pizze", price: 8.0, note: "Intensa.", ingredients: ["pomodoro", "mozzarella", "zola", "grana", "fontina"] },
   { id: "wurstel", name: "Wurstel", category: "pizze", price: 7.5, note: "Pomodoro, mozzarella e wurstel.", ingredients: ["pomodoro", "mozzarella", "wurstel"] },
-  { id: "patatine", name: "Patatine", category: "cucina", price: 3.0, note: "Patatine fritte.", ingredients: ["patatine"] },
-  { id: "piatto-prosciutto", name: "Piatto con Prosciutto", category: "cucina", price: 3.5, note: "Semplice.", ingredients: ["prosciutto", "patatine"] },
+  { id: "patatine", name: "Patatine", category: "cucina", price: 4.0, note: "Patatine fritte.", ingredients: ["patatine"] },
   { id: "pane", name: "Pane", category: "cucina", price: 0.3, note: "Aggiunta base." },
   { id: "affettamisti", name: "Affettamisti", category: "cucina", price: 5.0, note: "Tagliere misto." },
   { id: "formaggi-misti", name: "Formaggi Misti", category: "cucina", price: 6.0, note: "Tagliere misto." },
@@ -38,54 +35,57 @@ const catalog = [
   { id: "casoncelli", name: "Casoncelli", category: "cucina", price: 6.0, note: "Primo piatto." },
   { id: "lasagne", name: "Lasagne", category: "cucina", price: 6.0, note: "Primo piatto." },
   { id: "pasta-pomodoro", name: "Pasta Pomodoro", category: "cucina", price: 3.5, note: "Piatto semplice." },
-  { id: "costata", name: "Costata", category: "cucina", price: 17.0, note: "Taglio importante." },
+  { id: "costata", name: "Costata", category: "cucina", price: 18.0, note: "Taglio importante." },
   { id: "costine", name: "Costine", category: "cucina", price: 6.0, note: "Carne alla griglia." },
   { id: "cotechino-pane", name: "Cotechino + Pane", category: "cucina", price: 4.0, note: "Servito con pane." },
   { id: "grigliata-mista", name: "Grigliata Mista", category: "cucina", price: 8.5, note: "Misto griglia." },
   { id: "insalata", name: "Insalata", category: "cucina", price: 2.0, note: "Contorno fresco." },
-  { id: "insalata-pomodori", name: "Insalata Pomodori", category: "cucina", price: 3.0, note: "Contorno fresco." },
-  { id: "polenta-asino", name: "Polenta e Asino", category: "cucina", price: 9.0, note: "Piatto della casa." },
+  { id: "insalata-pomodori", name: "Insalata Pomodori", category: "cucina", price: 3.5, note: "Contorno fresco." },
+  { id: "polenta-asino", name: "Polenta e Asino", category: "cucina", price: 11.5, note: "Piatto della casa." },
   { id: "pollo", name: "Pollo", category: "cucina", price: 5.0, note: "Porzione singola." },
   { id: "roast-beef", name: "Roast Beef", category: "cucina", price: 5.5, note: "Carne fredda." },
   { id: "spiedini", name: "Spiedini", category: "cucina", price: 6.5, note: "Alla griglia." },
-  { id: "stufato-asina", name: "Stufato d'Asina", category: "cucina", price: 7.5, note: "Secondo piatto." },
-  { id: "taragna-asina", name: "Taragna e Asina", category: "cucina", price: 12.0, note: "Piatto completo." },
-  { id: "cheese-burger", name: "Cheese Burger", category: "cucina", price: 2.0, note: "Panino caldo." },
-  { id: "hamburger-farcito", name: "Hamburger Farcito", category: "cucina", price: 4.0, note: "Panino farcito." },
-  { id: "polenta", name: "Polenta", category: "cucina", price: 2.0, note: "Contorno semplice." },
+  { id: "stufato-asina", name: "Stufato d'Asina", category: "cucina", price: 8.5, note: "Secondo piatto." },
+  { id: "taragna-asina", name: "Taragna e Asina", category: "cucina", price: 14.5, note: "Piatto completo." },
+  { id: "taragna", name: "Taragna", category: "cucina", price: 6.0, note: "Piatto completo." },
+  { id: "polenta", name: "Polenta", category: "cucina", price: 3.0, note: "Contorno semplice." },
   { id: "pomodori", name: "Pomodori", category: "cucina", price: 2.0, note: "Contorno semplice." },
   { id: "ketchup-maionese", name: "Ketchup o Maionese", category: "cucina", price: 0.5, note: "Salse extra." },
-  { id: "dolce", name: "Dolce", category: "cucina", price: 3.5, note: "Dessert del giorno." },
   { id: "acqua-mezzo", name: "Acqua 0,50 L", category: "bevande", price: 1.0, note: "Formato piccolo." },
   { id: "acqua-lt", name: "Acqua 1 L", category: "bevande", price: 1.5, note: "Formato grande." },
-  { id: "amaro", name: "Amaro", category: "bevande", price: 4.0, note: "Dopo pasto." },
   { id: "bibite-1l", name: "Bibite 1 L", category: "bevande", price: 3.0, note: "Bottiglia da litro." },
   { id: "panasche-media", name: "Panasche Media", category: "bevande", price: 3.5, note: "Bibita mista." },
   { id: "birra", name: "Birra Media", category: "bevande", price: 4.5, note: "Boccale medio." },
-  { id: "caffe-corretto", name: "Caffe' Corretto", category: "bevande", price: 1.5, note: "Con extra." },
-  { id: "caffe", name: "Caffe' Liscio", category: "bevande", price: 1.0, note: "Fine pasto." },
-  { id: "coca-cola-litro", name: "Coca Cola Litro", category: "bevande", price: 4.0, note: "Bottiglia da litro." },
-  { id: "cognac-grappa", name: "Cognac Grappa", category: "bevande", price: 3.0, note: "Distillato." },
+  { id: "coca-cola-litro", name: "Coca Cola 1 L", category: "bevande", price: 4.0, note: "Bottiglia da litro." },
   { id: "lattines", name: "Lattina", category: "bevande", price: 2.0, note: "Bibita fresca." },
-  { id: "limoncello", name: "Limoncello", category: "bevande", price: 3.0, note: "Dopo pasto." },
   { id: "vino-bottiglia", name: "Vino Bottiglia", category: "bevande", price: 8.0, note: "Per tavolata." },
   { id: "vino-calice", name: "Vino 1 Calice", category: "bevande", price: 2.0, note: "Al bicchiere." },
   { id: "vino-mezzo-spina", name: "Vino 1/2 Spina", category: "bevande", price: 4.0, note: "Alla spina." },
   { id: "vino-spina-litro", name: "Vino 1 L Spina", category: "bevande", price: 7.0, note: "Alla spina." },
   { id: "spumante", name: "Spumante", category: "bevande", price: 14.0, note: "Bottiglia." },
-  { id: "fiordinello", name: "Fortunello", category: "gelati", price: 1.5, note: "Gelato singolo." },
-  { id: "coppe", name: "Coppe", category: "gelati", price: 2.5, note: "Coppa gelato." },
-  { id: "ghiacciolo", name: "Ghiacciolo", category: "gelati", price: 1.0, note: "Gelato su stecco." },
-  { id: "liquirizia", name: "Liquirizia", category: "gelati", price: 1.5, note: "Gelato alla liquirizia." },
-  { id: "maxi-cono", name: "Maxi Cono", category: "gelati", price: 2.5, note: "Cono grande." },
-  { id: "mottarello", name: "Mottarello", category: "gelati", price: 1.5, note: "Gelato confezionato." },
+  { id: "fiordinello", name: "Fortunello", category: "dopo-cena", price: 1.5, note: "Gelato singolo." },
+  { id: "coppe", name: "Coppe", category: "dopo-cena", price: 2.5, note: "Coppa gelato." },
+  { id: "ghiacciolo", name: "Ghiacciolo", category: "dopo-cena", price: 1.0, note: "Gelato su stecco." },
+  { id: "liquirizia", name: "Liquì", category: "dopo-cena", price: 1.5, note: "Gelato alla liquirizia." },
+  { id: "maxi-cono", name: "Maxi Cono", category: "dopo-cena", price: 2.5, note: "Cono grande." },
+  { id: "mottarello", name: "Mottarello", category: "dopo-cena", price: 1.5, note: "Gelato confezionato." },
+  { id: "limoncello", name: "Limoncello", category: "dopo-cena", price: 3.0, note: "Dopo pasto." },
+  { id: "dolce", name: "Dolce", category: "dopo-cena", price: 4.0, note: "Dessert del giorno." },
+  { id: "cognac-grappa", name: "Cognac Grappa", category: "dopo-cena", price: 3.0, note: "Distillato." },
+  { id: "caffe", name: "Caffe' Liscio", category: "dopo-cena", price: 1.0, note: "Fine pasto." },
+  { id: "caffe-corretto", name: "Caffe' Corretto", category: "dopo-cena", price: 1.5, note: "Con extra." },
+  { id: "amaro", name: "Amaro", category: "dopo-cena", price: 4.0, note: "Dopo pasto." },
+  { id: "caffe-deca", name: "Caffe' Deca", category: "dopo-cena", price: 1.2, note: "Con extra." },
+
+
+
 ];
 
 const categories = {
   pizze: { title: "Pizze", subtitle: "Le proposte salate disponibili." },
   cucina: { title: "Cucina", subtitle: "Primi, griglia e piatti caldi." },
   bevande: { title: "Bevande", subtitle: "Acqua, caffe, birra e altro." },
-  gelati: { title: "Gelati", subtitle: "Coppe, coni e ghiaccioli." },
+  "dopo-cena": { title: "Dopo cena", subtitle: "Coppe, coni, ghiaccioli e dessert." },
 };
 
 const refs = {
@@ -95,8 +95,10 @@ const refs = {
   receiptCount: document.getElementById("receipt-count"),
   receiptDate: document.getElementById("receipt-date"),
   receiptCustomer: document.getElementById("receipt-customer"),
+  receiptTable: document.getElementById("receipt-table"),
   orderNumber: document.getElementById("order-number"),
   firstNameInput: document.getElementById("customer-first-name"),
+  tableNumberInput: document.getElementById("table-number"),
   cashInput: document.getElementById("cash-input"),
   changeValue: document.getElementById("change-value"),
   ingredientDialog: document.getElementById("ingredient-dialog"),
@@ -112,6 +114,7 @@ const state = {
   filter: "all",
   search: "",
   customerFirstName: "",
+  tableNumber: "",
   customerLastName: "",
   cashReceived: "",
   currentOrderNumber: loadNextOrderNumber(),
@@ -339,6 +342,7 @@ function renderReceipt() {
   const sum = totals();
   refs.orderNumber.textContent = String(state.currentOrderNumber);
   if (refs.receiptCustomer) refs.receiptCustomer.textContent = state.customerFirstName.trim() || "-";
+  if (refs.receiptTable) refs.receiptTable.textContent = state.tableNumber.trim() || "-";
   refs.receiptDate.textContent = new Date().toLocaleString("it-IT", {
     day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit",
   });
@@ -505,10 +509,12 @@ function clearIngredientSelection() {
 function clearCurrentOrder() {
   state.lines = [];
   state.customerFirstName = "";
+  state.tableNumber = "";
   state.customerLastName = "";
   state.cashReceived = "";
   state.ingredientDrafts.clear();
   refs.firstNameInput.value = "";
+  refs.tableNumberInput.value = "";
   refs.cashInput.value = "";
   renderAll();
 }
@@ -519,6 +525,7 @@ function buildOrderSnapshot() {
     id: uid(),
     orderNumber: state.currentOrderNumber,
     customerFirstName: state.customerFirstName,
+    tableNumber: state.tableNumber,
     customerLastName: state.customerLastName,
     cashReceived: sum.paid,
     change: sum.change,
@@ -567,10 +574,10 @@ function buildCategoryPrintTickets(order) {
         return `
           <div class="print-ticket-row">
             <div>
-              <strong>${line.quantity} x ${escapeHtml(item?.name || line.itemId)}</strong>
+              <strong class="print-ticket-item-name">${line.quantity} x ${escapeHtml(item?.name || line.itemId)}</strong>
               ${details ? `<p>${escapeHtml(details)}</p>` : ""}
             </div>
-            <strong>${formatCurrency(lineTotal(line))}</strong>
+            <strong class="print-ticket-item-price">${formatCurrency(lineTotal(line))}</strong>
           </div>
         `;
       }).join("");
@@ -579,8 +586,9 @@ function buildCategoryPrintTickets(order) {
         <section class="print-ticket-page">
           <p class="print-ticket-brand">Parrocchia di Sombreno</p>
           <h2 class="print-ticket-title">Sagra di Sombreno</h2>
-          <p class="print-ticket-meta">Ordine N. ${order.orderNumber}</p>
-          <p class="print-ticket-meta">Cliente: ${escapeHtml(order.customerFirstName || "-")}</p>
+          <p class="print-ticket-meta"><strong>Ordine N.</strong> ${order.orderNumber}</p>
+          <p class="print-ticket-meta"><strong>Cliente:</strong> ${escapeHtml(order.customerFirstName || "-")}</p>
+          <p class="print-ticket-meta"><strong>Tavolo:</strong> ${escapeHtml(order.tableNumber || "-")}</p>
           <p class="print-ticket-meta">Data e ora: ${createdAt}</p>
           <p class="print-ticket-department">Reparto: ${escapeHtml(categoryLabel)}</p>
           <div class="print-ticket-lines">${rows}</div>
@@ -590,6 +598,46 @@ function buildCategoryPrintTickets(order) {
     });
 
   refs.printCategoryTickets.innerHTML = pages.join("");
+}
+
+function waitForPrintAssets(timeoutMs = 1500) {
+  if (!refs.printCategoryTickets) return Promise.resolve();
+
+  const images = [...refs.printCategoryTickets.querySelectorAll("img")];
+  if (!images.length) return Promise.resolve();
+
+  return new Promise((resolve) => {
+    let pending = images.length;
+    const done = () => {
+      pending -= 1;
+      if (pending <= 0) resolve();
+    };
+
+    const timeoutId = window.setTimeout(resolve, timeoutMs);
+
+    images.forEach((image) => {
+      if (image.complete && image.naturalWidth > 0) {
+        done();
+        return;
+      }
+
+      const finish = () => {
+        image.removeEventListener("load", finish);
+        image.removeEventListener("error", finish);
+        done();
+      };
+
+      image.addEventListener("load", finish, { once: true });
+      image.addEventListener("error", finish, { once: true });
+    });
+
+    Promise.resolve().then(() => {
+      if (pending <= 0) {
+        window.clearTimeout(timeoutId);
+        resolve();
+      }
+    });
+  });
 }
 
 async function saveOrderToBackend(order) {
@@ -624,6 +672,7 @@ async function saveOrder() {
   }
 
   buildCategoryPrintTickets(order);
+  await waitForPrintAssets();
   window.print();
 
   state.currentOrderNumber += 1;
@@ -643,12 +692,14 @@ function resetEvening() {
   state.savedOrders = [];
   state.currentOrderNumber = 1;
   state.customerFirstName = "";
+  state.tableNumber = "";
   state.customerLastName = "";
   state.cashReceived = "";
   state.ingredientDrafts.clear();
   saveSavedOrders();
   saveNextOrderNumber(1);
   refs.firstNameInput.value = "";
+  refs.tableNumberInput.value = "";
   refs.cashInput.value = "";
   if (refs.saveStatus) {
     refs.saveStatus.textContent = closedEvening.hasData
@@ -700,6 +751,12 @@ document.addEventListener("click", (event) => {
 
 refs.firstNameInput.addEventListener("input", (event) => {
   state.customerFirstName = event.target.value;
+  renderReceipt();
+});
+
+refs.tableNumberInput.addEventListener("input", (event) => {
+  state.tableNumber = event.target.value;
+  renderReceipt();
 });
 
 refs.cashInput.addEventListener("input", (event) => {

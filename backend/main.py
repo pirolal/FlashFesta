@@ -1,10 +1,13 @@
 import json
+import os
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-HOST = "127.0.0.1"
-PORT = 8000
+# When deployed to Render the service must listen on 0.0.0.0 and the port
+# is provided via the PORT environment variable. Locally it falls back to 8000.
+HOST = "0.0.0.0"
+PORT = int(os.environ.get("PORT", "8000"))
 DATA_FILE = Path(__file__).parent / "orders.json"
 
 

@@ -413,26 +413,44 @@ h2 {
 	border-color: #b6d8b6;
 }
 
+.menu-group.category-cucina .compact-menu-grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 5px;
+}
+
+.menu-group.category-cucina .compact-menu-button {
+	padding: 8px 10px;
+	min-height: 44px;
+}
+
+.menu-group.category-cucina .compact-menu-label {
+	font-size: 0.84rem;
+	line-height: 1.08;
+}
+
 .menu-group.category-bevande .compact-menu-button {
 	background: #eaf4ff;
 	border-color: #b8d0ec;
 }
 
-.menu-group.category-gelati .compact-menu-button {
+.menu-group.category-dopo-cena .compact-menu-button {
 	background: #fff1f7;
 	border-color: #e5bdd2;
 }
 
-.menu-group.category-gelati .compact-menu-grid {
-	grid-template-columns: 1fr;
+.menu-group.category-dopo-cena .compact-menu-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 5px;
 }
 
-.menu-group.category-gelati .compact-menu-button {
-	padding: 12px 14px;
+.menu-group.category-dopo-cena .compact-menu-button {
+	padding: 8px 10px;
+	min-height: 44px;
 }
 
-.menu-group.category-gelati .compact-menu-label {
-	font-size: 0.92rem;
+.menu-group.category-dopo-cena .compact-menu-label {
+	font-size: 0.84rem;
+	line-height: 1.08;
 }
 
 .item-details {
@@ -687,8 +705,16 @@ h2 {
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
 	backdrop-filter: blur(16px);
+    position: relative; /* allow absolute bg inside */
 }
 
+
+/* removed .saved-orders-bg: decorative background moved/disabled */
+
+.saved-orders-list {
+	position: relative;
+	z-index: 1;
+}
 .saved-head {
 	margin-bottom: 10px;
 }
@@ -703,6 +729,82 @@ h2 {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 14px;
+}
+
+/* Compact layout overrides only for the orders dashboard */
+body.orders-page .page-shell {
+	width: 98%;
+	margin: 0 auto;
+	padding: 6px 0 6px;
+}
+
+body.orders-page .hero {
+	padding: 6px 8px;
+	box-shadow: none;
+	background: linear-gradient(135deg, rgba(255, 250, 243, 0.98), rgba(255, 245, 231, 0.95));
+}
+
+body.orders-page .hero::after {
+	display: none; /* remove big decorative circle */
+}
+
+body.orders-page .saved-orders-card {
+	margin-top: 8px;
+	padding: 16px;
+}
+
+/* make the decorative background sit directly behind the orders list */
+body.orders-page .saved-orders-bg {
+	top: auto !important;
+	bottom: 12px;
+	margin: 8px 12px 12px 12px;
+	height: auto;
+}
+
+/* ensure cards are more compact */
+body.orders-page .saved-order {
+	padding: 12px;
+	border-radius: 12px;
+}
+
+/* Strong override: remove all decorative overlays on orders page and use a clean background */
+body.orders-page {
+	background: var(--surface-strong, #fffaf3) !important;
+}
+
+body.orders-page::before {
+	display: none !important;
+}
+
+/* remove the programmatic decorative block if present */
+body.orders-page .saved-orders-bg {
+	display: none !important;
+}
+
+/* ensure grid stays readable */
+body.orders-page .saved-orders-list {
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+}
+
+/* Emergency fixes: remove any remaining decorative overlays, gradients or large shadows
+	 that may appear under the orders list. These are high-specificity, page-scoped
+	 overrides to ensure the dashboard is visually clean. */
+body.orders-page,
+body.orders-page .page-shell,
+body.orders-page .saved-orders-card {
+	background-image: none !important;
+	background: var(--surface-strong, #fffaf3) !important;
+	box-shadow: none !important;
+}
+
+body.orders-page *::before,
+body.orders-page *::after {
+	display: none !important;
+}
+
+body.orders-page .saved-order {
+	box-shadow: none !important;
 }
 
 .admin-summary-card,
@@ -962,7 +1064,7 @@ h2 {
 	}
 
 	.menu-groups {
-		grid-template-columns: minmax(0, 1.15fr) minmax(0, 2.25fr) minmax(0, 1.2fr) minmax(0, 0.5fr);
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.7fr) minmax(0, 1.1fr) minmax(0, 1.05fr);
 		align-content: start;
 		min-height: 0;
 		overflow: auto;
@@ -988,28 +1090,62 @@ h2 {
 
 	.menu-group.category-pizze .compact-menu-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 5px;
+	}
+
+	.menu-group.category-pizze .compact-menu-button {
+		padding: 8px 10px;
+		min-height: 44px;
+	}
+
+	.menu-group.category-pizze .compact-menu-label {
+		font-size: 0.84rem;
+		line-height: 1.08;
 	}
 
 	.menu-group.category-cucina .compact-menu-grid {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 5px;
+	}
+
+	.menu-group.category-cucina .compact-menu-button {
+		padding: 8px 10px;
+		min-height: 44px;
+	}
+
+	.menu-group.category-cucina .compact-menu-label {
+		font-size: 0.84rem;
+		line-height: 1.08;
 	}
 
 	.menu-group.category-bevande .compact-menu-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 5px;
 	}
 
-	.menu-group.category-gelati .compact-menu-grid {
-		grid-template-columns: 1fr;
+	.menu-group.category-bevande .compact-menu-button {
+		padding: 8px 10px;
+		min-height: 44px;
 	}
 
-	.menu-group.category-gelati .compact-menu-button {
-		padding: 8px 9px;
-		min-height: 42px;
-	}
-
-	.menu-group.category-gelati .compact-menu-label {
+	.menu-group.category-bevande .compact-menu-label {
 		font-size: 0.84rem;
-		line-height: 1.1;
+		line-height: 1.08;
+	}
+
+	.menu-group.category-dopo-cena .compact-menu-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 5px;
+	}
+
+	.menu-group.category-dopo-cena .compact-menu-button {
+		padding: 8px 10px;
+		min-height: 44px;
+	}
+
+	.menu-group.category-dopo-cena .compact-menu-label {
+		font-size: 0.84rem;
+		line-height: 1.08;
 	}
 
 	.catalogue-card {
@@ -1102,8 +1238,10 @@ h2 {
 		color: #000;
 		width: 80mm;
 		margin: 0 auto;
-		font-size: 12px;
-		line-height: 1.25;
+		font-size: 16px !important;
+		line-height: 1.38 !important;
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
 	}
 
 	body::before,
@@ -1114,7 +1252,7 @@ h2 {
 
 	.print-category-tickets {
 		display: block !important;
-		width: 75mm;
+		width: 77mm;
 		margin: 0 auto;
 	}
 
@@ -1124,6 +1262,14 @@ h2 {
 		padding-bottom: 1mm;
 	}
 
+	.print-ticket-logo {
+		display: block;
+		width: 34mm !important;
+		height: auto;
+		margin: 0 auto 1.2mm;
+		object-fit: contain;
+	}
+
 	.print-ticket-page:last-child {
 		break-after: auto;
 		page-break-after: auto;
@@ -1131,7 +1277,7 @@ h2 {
 
 	.print-ticket-brand {
 		margin: 0 0 0.8mm;
-		font-size: 11px;
+		font-size: 15px !important;
 		font-weight: 700;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -1139,51 +1285,92 @@ h2 {
 
 	.print-ticket-title {
 		margin: 0 0 1mm;
-		font-size: 24px;
+		font-size: 32px !important;
 		font-weight: 400;
 		line-height: 1.05;
 	}
 
 	.print-ticket-meta {
-		font-size: 10px;
-		margin: 0.4mm 0;
+		display: block;
+		font-size: 16px !important;
+		line-height: 1.2;
+		white-space: nowrap;
+		margin: 0.6mm 0;
+		font-weight: 400;
+	}
+
+	.print-ticket-meta strong,
+	.print-ticket-department strong {
+		font-weight: 800;
 	}
 
 	.print-ticket-department {
 		margin: 1.2mm 0;
-		padding: 0.6mm 0;
-		font-size: 11px;
-		font-weight: 700;
-		border-top: 1px dashed #000;
-		border-bottom: 1px dashed #000;
+		padding: 0.85mm 0;
+		font-size: 16px !important;
+		font-weight: 400;
+		border-top: 1px solid #000;
+		border-bottom: 1px solid #000;
 	}
 
 	.print-ticket-lines {
 		display: grid;
-		gap: 1.4mm;
+		gap: 1.8mm;
 		margin-top: 1mm;
 	}
 
 	.print-ticket-row {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
+		grid-template-columns: minmax(0, 1fr) 19mm;
 		gap: 1.8mm;
 		align-items: start;
-		font-size: 11px;
+		font-size: 17px !important;
+		font-weight: 400;
+	}
+
+	.print-ticket-row > div:first-child {
+		min-width: 0;
+		padding-right: 0.6mm;
 	}
 
 	.print-ticket-row p {
 		margin: 0.4mm 0 0;
-		font-size: 10px;
+		font-size: 14px !important;
+		font-weight: 400;
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+
+	.print-ticket-row strong {
+		font-weight: 400;
+	}
+
+	.print-ticket-item-name {
+		display: block;
+		font-size: 17px !important;
+		font-weight: 400;
+		white-space: normal;
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+
+	.print-ticket-item-price {
+		display: block;
+		font-size: 17px !important;
+		font-weight: 400;
+		white-space: nowrap;
+		justify-self: end;
+		align-self: start;
+		text-align: right;
 	}
 
 	.print-ticket-total {
 		margin-top: 1.4mm;
-		padding-top: 1mm;
-		font-size: 13px;
+		padding-top: 1.2mm;
+		font-size: 18px !important;
 		font-weight: 800;
 		text-align: center;
-		border-top: 1px dashed #000;
+		border-top: 1px solid #000;
 	}
 
 	.page-shell {
@@ -1198,7 +1385,7 @@ h2 {
 
 	.receipt-card {
 		position: static;
-		width: 75mm;
+		width: 76mm;
 		margin: 0 auto;
 		padding: 0;
 		box-shadow: none;
@@ -1224,7 +1411,7 @@ h2 {
 	}
 
 	.receipt-brand {
-		font-size: 11px;
+		font-size: 14px !important;
 		font-weight: 700;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -1233,23 +1420,25 @@ h2 {
 	}
 
 	.ticket-title {
-		font-size: 30px;
+		font-size: 36px !important;
 		font-weight: 400;
 		line-height: 1.05;
 		margin: 0 0 1.6mm;
 	}
 
 	.receipt-meta {
-		font-size: 10px;
-		margin: 0.6mm 0;
+		font-size: 15px !important;
+		line-height: 1.2;
+		margin: 0.55mm 0;
 		color: #000;
 		text-align: left;
+		white-space: nowrap;
 	}
 
 	.receipt-lines {
 		padding: 0.8mm 0 0.4mm;
 		min-height: 0;
-		gap: 1.6mm;
+		gap: 1.8mm;
 		border-bottom: 0;
 		margin-bottom: 1.4mm;
 	}
@@ -1269,7 +1458,7 @@ h2 {
 		border: 0;
 		border-radius: 0;
 		background: transparent;
-		font-size: 11px;
+		font-size: 15px !important;
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) auto;
 		align-items: start;
@@ -1277,15 +1466,17 @@ h2 {
 	}
 
 	.receipt-line strong {
-		font-size: 11px;
+		font-size: 15px !important;
 		font-weight: 700;
 		margin-bottom: 0;
+		white-space: nowrap;
 	}
 
 	.receipt-line span,
 	.line-note {
-		font-size: 10px;
+		font-size: 12px !important;
 		color: #000;
+		white-space: nowrap;
 	}
 
 	.receipt-line > div:last-child {
@@ -1308,7 +1499,7 @@ h2 {
 	}
 
 	.receipt-summary strong {
-		font-size: 14px;
+		font-size: 17px !important;
 		font-weight: 800;
 	}
 
@@ -1323,7 +1514,7 @@ h2 {
 	}
 
 	.summary-total span {
-		font-size: 11px;
+		font-size: 13px !important;
 		font-weight: 700;
 		text-transform: none;
 		margin-bottom: 0.5mm;

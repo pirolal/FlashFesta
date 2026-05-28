@@ -48,6 +48,7 @@ function renderOrders(orders) {
         `;
       }).join("")
     : `<div class="receipt-empty">Nessun ordine trovato.</div>`;
+
 }
 
 loadOrders().then(renderOrders);

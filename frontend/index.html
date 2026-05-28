@@ -27,7 +27,7 @@
 							<button class="filter" type="button" data-filter="pizze">Pizze</button>
 							<button class="filter" type="button" data-filter="cucina">Cucina</button>
 							<button class="filter" type="button" data-filter="bevande">Bevande</button>
-							<button class="filter" type="button" data-filter="gelati">Gelati</button>
+							<button class="filter" type="button" data-filter="dopo-cena">Dopo cena</button>
 						</div>
 					</div>
 				</div>
@@ -41,6 +41,7 @@
 					<h2 class="ticket-title">Sagra di Sombreno</h2>
 					<p class="receipt-meta">Ordine N. <span id="order-number">1</span></p>
 					<p class="receipt-meta">Cliente: <span id="receipt-customer">-</span></p>
+					<p class="receipt-meta">Tavolo: <span id="receipt-table">-</span></p>
 					<p class="receipt-meta">Data e ora: <span id="receipt-date"></span></p>
 				</div>
 
@@ -48,6 +49,10 @@
 					<label>
 						<span>Nominativo</span>
 						<input id="customer-first-name" type="text" placeholder="Nome">
+					</label>
+					<label>
+						<span>Numero tavolo</span>
+						<input id="table-number" type="text" placeholder="Es. 12">
 					</label>
 				</div>
 
@@ -100,7 +105,7 @@
 					<div id="ingredient-remove-list" class="chip-list"></div>
 				</div>
 				<div>
-					<p class="ingredient-subtitle">Ingredienti extra scritti a mano (+0,50 cad.)</p>
+					<p class="ingredient-subtitle">Ingredienti extra scritti a mano (+1,00 cad.)</p>
 					<div id="ingredient-notes" class="ingredient-notes"></div>
 				</div>
 			</div>
