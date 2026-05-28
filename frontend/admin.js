@@ -3,10 +3,6 @@ const STORAGE_KEYS = {
   adminAuth: "flashfesta_admin_auth_v1",
 };
 
-const ADMIN_CREDENTIALS = {
-  username: "admin",
-  password: "flashfesta2026",
-};
 
 const refs = {
   app: document.getElementById("admin-app"),
@@ -51,14 +47,7 @@ function showApp() {
   if (refs.app) refs.app.classList.remove("is-hidden");
 }
 
-function checkCredentials(username, password) {
-  const normalizedUsername = String(username || "").trim().toLowerCase();
-  const expectedUsername = String(ADMIN_CREDENTIALS.username || "").trim().toLowerCase();
-  const normalizedPassword = String(password || "").trim();
-  return normalizedUsername === expectedUsername && normalizedPassword === ADMIN_CREDENTIALS.password;
-}
-
-function handleLoginSubmit(event) {
+async function handleLoginSubmit(event) {
   if (event) event.preventDefault();
   const username = String(refs.usernameInput?.value || "").trim();
   const password = String(refs.passwordInput?.value || "");
@@ -68,17 +57,24 @@ function handleLoginSubmit(event) {
     return;
   }
 
-  const ok = checkCredentials(username, password);
-
-  if (!ok) {
+  try {
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok && data.ok) {
+      setAuthenticated(true);
+      if (refs.loginError) refs.loginError.textContent = "";
+      showApp();
+      renderAdmin();
+      return;
+    }
     if (refs.loginError) refs.loginError.textContent = "Credenziali non valide.";
-    return;
+  } catch (err) {
+    if (refs.loginError) refs.loginError.textContent = "Errore di rete. Riprovare.";
   }
-
-  setAuthenticated(true);
-  if (refs.loginError) refs.loginError.textContent = "";
-  showApp();
-  renderAdmin();
 }
 
 function logoutAdmin() {
