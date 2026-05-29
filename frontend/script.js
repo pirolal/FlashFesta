@@ -8,7 +8,7 @@ const API_BASE = "http://127.0.0.1:8000";
 const EXTRA_INGREDIENT_PRICE = 1.0;
 
 const catalog = [
-  { id: "americana", name: "Americana", category: "pizze", price: 7.5, note: "Pomodoro, mozzarella, wurstel e patatine.", ingredients: ["pomodoro", "mozzarella", "wurstel", "patatine"] },
+  { id: "americana", name: "Americana", category: "pizze", price: 9.5, note: "Pomodoro, mozzarella, wurstel e patatine.", ingredients: ["pomodoro", "mozzarella", "wurstel", "patatine"] },
   { id: "capricciosa", name: "Capricciosa", category: "pizze", price: 8.0, note: "Un grande classico.", ingredients: ["pomodoro", "mozzarella", "prosciutto", "funghi", "carciofi", "olive", "acciughe"] },
   { id: "della-sagra", name: "Della Sagra", category: "pizze", price: 10.0, note: "Salame e branzi.", ingredients: ["pomodoro", "mozzarella", "salame", "branzi"] },
   { id: "margherita", name: "Margherita", category: "pizze", price: 6.0, note: "La piu amata.", ingredients: ["pomodoro", "mozzarella"] },
