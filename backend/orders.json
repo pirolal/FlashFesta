@@ -1,23 +1,395 @@
 [
   {
-    "id": "170f9087-7cc2-4146-a8fe-dee37f8d2781",
+    "id": "1780226384549-e1842b8c39b45",
+    "orderNumber": 7,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -37,
+    "total": 37,
+    "createdAt": "2026-05-31T11:19:44.549Z",
+    "lines": [
+      {
+        "id": "1780226379182-34bfa64f536378",
+        "itemId": "acqua-mezzo",
+        "itemName": "Acqua 0,50 L",
+        "itemPrice": 1,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780226379803-da17934cea32c",
+        "itemId": "costata",
+        "itemName": "Costata",
+        "itemPrice": 18,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780226380475-f52cbe99d6761",
+        "itemId": "formaggi-misti",
+        "itemName": "Formaggi Misti",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780226381065-40df71b19b0c8",
+        "itemId": "cotechino-pane",
+        "itemName": "Cotechino + Pane",
+        "itemPrice": 4,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780226382069-dca22ade1ea488",
+        "itemId": "ketchup-maionese",
+        "itemName": "Ketchup o Maionese",
+        "itemPrice": 0.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780226383560-6c0957dfcb2518",
+        "itemId": "margherita-doppia",
+        "itemName": "Margherita DP Mozz.",
+        "itemPrice": 7.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780226046884-3cb3056d8d571",
+    "orderNumber": 6,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -4,
+    "total": 4,
+    "createdAt": "2026-05-31T11:14:06.884Z",
+    "lines": [
+      {
+        "id": "1780226045551-69457716cc2c08",
+        "itemId": "coca-cola-litro",
+        "itemName": "Coca Cola 1 L",
+        "itemPrice": 4,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780226025881-e3dcfb3d41bdc8",
+    "orderNumber": 5,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -19,
+    "total": 19,
+    "createdAt": "2026-05-31T11:13:45.881Z",
+    "lines": [
+      {
+        "id": "1780226024047-722f5ab97aa9a",
+        "itemId": "costata",
+        "itemName": "Costata",
+        "itemPrice": 18,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780226024543-f6f1b4b9c84298",
+        "itemId": "acqua-mezzo",
+        "itemName": "Acqua 0,50 L",
+        "itemPrice": 1,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780226018416-223837568935d",
+    "orderNumber": 4,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -13,
+    "total": 13,
+    "createdAt": "2026-05-31T11:13:38.416Z",
+    "lines": [
+      {
+        "id": "1780226016546-20ce715ec4b0f8",
+        "itemId": "affettamisti",
+        "itemName": "Affettamisti",
+        "itemPrice": 5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780226017046-16ca2ae93c545",
+        "itemId": "4-stagioni",
+        "itemName": "4 Stagioni",
+        "itemPrice": 8,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780224055447-3a6fe64a3452f",
+    "orderNumber": 3,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -25,
+    "total": 25,
+    "createdAt": "2026-05-31T10:40:55.447Z",
+    "lines": [
+      {
+        "id": "1780224052949-7e4e0dd922dce",
+        "itemId": "casoncelli",
+        "itemName": "Casoncelli",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780224053578-0211bfa7de66c",
+        "itemId": "acqua-mezzo",
+        "itemName": "Acqua 0,50 L",
+        "itemPrice": 1,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780224054236-7763f9e9408578",
+        "itemId": "costata",
+        "itemName": "Costata",
+        "itemPrice": 18,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780223605190-dbee9b9b93074",
     "orderNumber": 2,
     "customerFirstName": "",
     "tableNumber": "",
     "customerLastName": "",
     "cashReceived": 0,
-    "change": -9,
-    "total": 9,
-    "createdAt": "2026-05-28T09:46:01.046Z",
+    "change": -29,
+    "total": 29,
+    "createdAt": "2026-05-31T10:33:25.191Z",
     "lines": [
       {
-        "id": "377e3b7e-c508-45a6-9015-ec3618eda87e",
+        "id": "1780223601980-43523f0a78671",
+        "itemId": "affettamisti",
+        "itemName": "Affettamisti",
+        "itemPrice": 5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780223603012-70470a816296",
+        "itemId": "casoncelli",
+        "itemName": "Casoncelli",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780223603655-56001f6dace9",
+        "itemId": "costata",
+        "itemName": "Costata",
+        "itemPrice": 18,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780223451399-25eca3ef6fc568",
+    "orderNumber": 1,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -10.3,
+    "total": 10.3,
+    "createdAt": "2026-05-31T10:30:51.399Z",
+    "lines": [
+      {
+        "id": "1780223448037-192703f1e60388",
+        "itemId": "casoncelli",
+        "itemName": "Casoncelli",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780223449299-53b92912a6fd08",
+        "itemId": "pane",
+        "itemName": "Pane",
+        "itemPrice": 0.3,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780223449827-81de66509bc148",
+        "itemId": "patatine",
+        "itemName": "Patatine",
+        "itemPrice": 4,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "eae1f821-e7d5-4e94-88da-10033de2951e",
+    "orderNumber": 3,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -8,
+    "total": 8,
+    "createdAt": "2026-05-31T10:30:22.113Z",
+    "lines": [
+      {
+        "id": "15cec289-4602-4bee-8b26-93bb7136f8d6",
         "itemId": "capricciosa",
+        "itemName": "Capricciosa",
+        "itemPrice": 8,
         "quantity": 1,
         "removeIngredients": [
+          "funghi",
           "acciughe"
         ],
-        "notes": "cipolla"
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "185abc7d-f054-4723-bb32-8d9a5d0e1d51",
+    "orderNumber": 2,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -20,
+    "total": 20,
+    "createdAt": "2026-05-31T10:29:43.382Z",
+    "lines": [
+      {
+        "id": "28ad23b6-8e2b-49a4-8577-61376ed7212d",
+        "itemId": "formaggi-misti",
+        "itemName": "Formaggi Misti",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "8181d211-423b-4077-ab1a-72c058373526",
+        "itemId": "insalata-pomodori",
+        "itemName": "Insalata Pomodori",
+        "itemPrice": 3.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "3cc4fa2e-4d04-432e-bcc8-506fa285fff8",
+        "itemId": "insalata",
+        "itemName": "Insalata",
+        "itemPrice": 2,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "7f2ff5f7-8f24-47d3-8820-6fc20ebcc25e",
+        "itemId": "grigliata-mista",
+        "itemName": "Grigliata Mista",
+        "itemPrice": 8.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "a7e12eee-3036-4a74-90a4-ab85e27922b9",
+    "orderNumber": 1,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -20,
+    "total": 20,
+    "createdAt": "2026-05-31T10:29:11.567Z",
+    "lines": [
+      {
+        "id": "ab7cf265-a3ef-46f6-8246-e7a189d9957d",
+        "itemId": "formaggi-misti",
+        "itemName": "Formaggi Misti",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "4606b1a3-4456-4b8e-a3aa-a76e9d50667f",
+        "itemId": "cotechino-pane",
+        "itemName": "Cotechino + Pane",
+        "itemPrice": 4,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "0696c11c-b3bb-4816-a2be-41639910ec19",
+        "itemId": "lasagne",
+        "itemName": "Lasagne",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "90ca9de4-41e6-4235-aa67-80eb6545bac5",
+        "itemId": "patatine",
+        "itemName": "Patatine",
+        "itemPrice": 4,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
       }
     ]
   }

@@ -247,6 +247,17 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+// Evita che unità come "L" finiscano su riga successiva: "0,50 L" -> "0,50\u00A0L"
+function preventUnitWrap(text) {
+  try {
+    return String(text).replace(/(\d[\d.,]*)\s+([A-Za-z]{1,3})\b/g, function(_, num, unit) {
+      return num + "\u00A0" + unit;
+    });
+  } catch (e) {
+    return text;
+  }
+}
+
 function normalizeIngredients(value) {
   if (!value) return [];
   if (Array.isArray(value)) {
@@ -534,6 +545,8 @@ function buildOrderSnapshot() {
     lines: state.lines.map((line) => ({
       id: line.id,
       itemId: line.itemId,
+      itemName: getItem(line.itemId)?.name || line.itemId,
+      itemPrice: Number(getItem(line.itemId)?.price || 0),
       quantity: line.quantity,
       removeIngredients: normalizeIngredients(line.removeIngredients),
       notes: String(line.notes || "").trim(),
@@ -571,13 +584,14 @@ function buildCategoryPrintTickets(order) {
       const rows = lines.map((line) => {
         const item = getItem(line.itemId);
         const details = customizationText(line);
+        const rawName = `${line.quantity} x ${item?.name || line.itemId}`;
+        const safeName = escapeHtml(preventUnitWrap(rawName));
         return `
           <div class="print-ticket-row">
-            <div>
-              <strong class="print-ticket-item-name">${line.quantity} x ${escapeHtml(item?.name || line.itemId)}</strong>
-              ${details ? `<p>${escapeHtml(details)}</p>` : ""}
+            <div class="print-ticket-line-main">
+              <strong class="print-ticket-item-name">${safeName}</strong>
+              ${details ? `<span class="print-ticket-item-details">${escapeHtml(details)}</span>` : ""}
             </div>
-            <strong class="print-ticket-item-price">${formatCurrency(lineTotal(line))}</strong>
           </div>
         `;
       }).join("");
@@ -773,3 +787,24 @@ window.addEventListener("beforeunload", () => {
 });
 
 renderAll();
+
+// Se la pagina viene aperta con ?reprint=<id> esegui la ristampa usando il template canonico
+window.addEventListener("load", async () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const reprintId = params.get("reprint");
+    if (!reprintId) return;
+
+    // assicurati di avere gli ordini caricati
+    const saved = loadSavedOrders();
+    const order = saved.find((o) => (o.id && String(o.id) === reprintId) || String(o.orderNumber) === reprintId || String(o.createdAt) === reprintId);
+    if (!order) return;
+
+    // costruisci i tickets e stampa con lo stesso flusso
+    buildCategoryPrintTickets(order);
+    await waitForPrintAssets();
+    window.print();
+  } catch (err) {
+    // fail silently
+  }
+});

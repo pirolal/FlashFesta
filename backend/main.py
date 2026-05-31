@@ -5,6 +5,7 @@ import socket
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import unquote
 
 # When deployed to Render the service must listen on 0.0.0.0 and the port
 # is provided via the PORT environment variable. Locally it falls back to 8000.
@@ -40,7 +41,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+        self.send_header("Access-Control-Allow-Methods", "GET,POST,DELETE,OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
         self.wfile.write(body)
@@ -48,7 +49,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(204)
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+        self.send_header("Access-Control-Allow-Methods", "GET,POST,DELETE,OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
 
@@ -93,6 +94,42 @@ class Handler(BaseHTTPRequestHandler):
                 return
 
         self._send_json(404, {"error": "not_found"})
+
+    def do_DELETE(self):
+        requested_path = self.path.split("?", 1)[0]
+        prefix = "/api/orders/"
+        if not requested_path.startswith(prefix):
+            self._send_json(404, {"error": "not_found"})
+            return
+
+        identifier = unquote(requested_path[len(prefix):].strip("/"))
+        if not identifier:
+            self._send_json(400, {"error": "missing_order_id"})
+            return
+
+        orders = load_orders()
+        remaining_orders = []
+        removed_order = None
+
+        for order in orders:
+            order_id = str(order.get("id", ""))
+            order_number = str(order.get("orderNumber", ""))
+            created_at = str(order.get("createdAt", ""))
+            if removed_order is None and identifier in {order_id, order_number, created_at}:
+                removed_order = order
+                continue
+            remaining_orders.append(order)
+
+        if removed_order is None:
+            self._send_json(404, {"error": "order_not_found"})
+            return
+
+        save_orders(remaining_orders)
+        self._send_json(200, {
+            "ok": True,
+            "count": len(remaining_orders),
+            "removed": removed_order.get("id") or removed_order.get("orderNumber"),
+        })
 
     def do_POST(self):
         # Login endpoint

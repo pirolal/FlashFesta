@@ -306,6 +306,11 @@ if (refs.logoutButton) refs.logoutButton.addEventListener("click", logoutAdmin);
 window.addEventListener("resize", () => {
   if (isAuthenticated()) renderAdmin();
 });
+window.addEventListener("storage", (event) => {
+  if (event.key === STORAGE_KEYS.festivalStats && isAuthenticated()) {
+    renderAdmin();
+  }
+});
 
 if (isAuthenticated()) {
   showApp();
