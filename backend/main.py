@@ -34,6 +34,47 @@ def save_orders(orders):
         json.dump(orders, handle, ensure_ascii=False, indent=2)
 
 
+def parse_iso_datetime(value):
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return None
+
+
+def canonical_order_payload(order):
+    if not isinstance(order, dict):
+        return ""
+    normalized = dict(order)
+    # Ignore volatile fields so an accidental re-submit with a new id is still detected.
+    normalized.pop("id", None)
+    normalized.pop("createdAt", None)
+    return json.dumps(normalized, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def is_recent_duplicate_order(existing_order, incoming_order, window_seconds=45):
+    if not isinstance(existing_order, dict) or not isinstance(incoming_order, dict):
+        return False
+
+    existing_number = str(existing_order.get("orderNumber", ""))
+    incoming_number = str(incoming_order.get("orderNumber", ""))
+    if not existing_number or existing_number != incoming_number:
+        return False
+
+    if canonical_order_payload(existing_order) != canonical_order_payload(incoming_order):
+        return False
+
+    existing_created = parse_iso_datetime(existing_order.get("createdAt"))
+    incoming_created = parse_iso_datetime(incoming_order.get("createdAt"))
+    if existing_created and incoming_created:
+        delta_seconds = abs((incoming_created - existing_created).total_seconds())
+        return delta_seconds <= window_seconds
+
+    # If timestamps are missing/invalid but payload+orderNumber match, treat as duplicate.
+    return True
+
+
 class Handler(BaseHTTPRequestHandler):
     def _send_json(self, status, payload):
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -176,6 +217,15 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         orders = load_orders()
+        duplicate = next((order for order in orders if is_recent_duplicate_order(order, payload)), None)
+        if duplicate is not None:
+            self._send_json(409, {
+                "ok": False,
+                "error": "duplicate_order",
+                "existing": duplicate.get("id") or duplicate.get("orderNumber"),
+            })
+            return
+
         orders.insert(0, payload)
         save_orders(orders)
         self._send_json(201, {"ok": True, "count": len(orders)})

@@ -107,6 +107,7 @@ const refs = {
   ingredientNotes: document.getElementById("ingredient-notes"),
   saveStatus: document.getElementById("save-status"),
   printCategoryTickets: document.getElementById("print-category-tickets"),
+  saveOrderButton: document.querySelector('[data-action="save-order"]'),
 };
 
 const state = {
@@ -121,6 +122,7 @@ const state = {
   savedOrders: loadSavedOrders(),
   ingredientDrafts: new Map(),
   activeIngredientContext: null,
+  isSavingOrder: false,
 };
 
 function uid() {
@@ -661,37 +663,65 @@ async function saveOrderToBackend(order) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(order),
     });
-    return response.ok;
+    if (response.ok) return { status: "saved" };
+    if (response.status === 409) return { status: "duplicate" };
+    return { status: "error" };
   } catch {
-    return false;
+    return { status: "offline" };
+  }
+}
+
+function setSaveOrderBusy(isBusy) {
+  state.isSavingOrder = Boolean(isBusy);
+  if (refs.saveOrderButton) {
+    refs.saveOrderButton.disabled = state.isSavingOrder;
+    refs.saveOrderButton.textContent = state.isSavingOrder ? "Salvataggio in corso..." : "Salva ordine";
   }
 }
 
 async function saveOrder() {
+  if (state.isSavingOrder) {
+    if (refs.saveStatus) refs.saveStatus.textContent = "Salvataggio gia in corso...";
+    return;
+  }
+
   if (!state.lines.length) {
     if (refs.saveStatus) refs.saveStatus.textContent = "Nessun articolo da salvare.";
     return;
   }
 
-  const order = buildOrderSnapshot();
-  state.savedOrders.unshift(order);
-  saveSavedOrders();
-  registerSavedOrder(order);
+  setSaveOrderBusy(true);
+  try {
+    const order = buildOrderSnapshot();
+    const backendResult = await saveOrderToBackend(order);
 
-  const backendSaved = await saveOrderToBackend(order);
-  if (refs.saveStatus) {
-    refs.saveStatus.textContent = backendSaved
-      ? "Ordine salvato su browser e file JSON backend."
-      : "Ordine salvato solo in browser. Avvia il backend per il file JSON.";
+    if (backendResult.status === "duplicate") {
+      if (refs.saveStatus) refs.saveStatus.textContent = "Ordine duplicato bloccato: non salvato due volte.";
+      return;
+    }
+
+    state.savedOrders.unshift(order);
+    saveSavedOrders();
+    registerSavedOrder(order);
+
+    if (refs.saveStatus) {
+      refs.saveStatus.textContent = backendResult.status === "saved"
+        ? "Ordine salvato su browser e file JSON backend."
+        : "Ordine salvato solo in browser. Avvia il backend per il file JSON.";
+    }
+
+    buildCategoryPrintTickets(order);
+    await waitForPrintAssets();
+    window.print();
+
+    state.currentOrderNumber += 1;
+    saveNextOrderNumber(state.currentOrderNumber);
+    clearCurrentOrder();
+  } catch {
+    if (refs.saveStatus) refs.saveStatus.textContent = "Errore durante il salvataggio ordine.";
+  } finally {
+    setSaveOrderBusy(false);
   }
-
-  buildCategoryPrintTickets(order);
-  await waitForPrintAssets();
-  window.print();
-
-  state.currentOrderNumber += 1;
-  saveNextOrderNumber(state.currentOrderNumber);
-  clearCurrentOrder();
 }
 
 window.addEventListener("afterprint", () => {

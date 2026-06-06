@@ -1,5 +1,107 @@
 [
   {
+    "id": "1780757831399-fa246bebf88178",
+    "orderNumber": 1,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -4.5,
+    "total": 4.5,
+    "createdAt": "2026-06-06T14:57:11.399Z",
+    "lines": [
+      {
+        "id": "1780757829274-2f11311b7f7df8",
+        "itemId": "acqua-lt",
+        "itemName": "Acqua 1 L",
+        "itemPrice": 1.5,
+        "quantity": 3,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780757814190-d9d92e3a314fe",
+    "orderNumber": 9,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -30.5,
+    "total": 30.5,
+    "createdAt": "2026-06-06T14:56:54.190Z",
+    "lines": [
+      {
+        "id": "1780757806875-ee0d2badde64c8",
+        "itemId": "fiordinello",
+        "itemName": "Fortunello",
+        "itemPrice": 1.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780757807492-e2af4d5b3f705",
+        "itemId": "spumante",
+        "itemName": "Spumante",
+        "itemPrice": 14,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780757808225-065437645c2458",
+        "itemId": "vino-spina-litro",
+        "itemName": "Vino 1 L Spina",
+        "itemPrice": 7,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780757808882-43160e426d22a",
+        "itemId": "vino-bottiglia",
+        "itemName": "Vino Bottiglia",
+        "itemPrice": 8,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780757793260-559233910649e",
+    "orderNumber": 8,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -21,
+    "total": 21,
+    "createdAt": "2026-06-06T14:56:33.260Z",
+    "lines": [
+      {
+        "id": "1780757790790-df5793be0e186",
+        "itemId": "4-stagioni",
+        "itemName": "4 Stagioni",
+        "itemPrice": 8,
+        "quantity": 2,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780757791673-ff64ba70d5f278",
+        "itemId": "affettamisti",
+        "itemName": "Affettamisti",
+        "itemPrice": 5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
     "id": "1780226384549-e1842b8c39b45",
     "orderNumber": 7,
     "customerFirstName": "",
