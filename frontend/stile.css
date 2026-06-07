@@ -1314,7 +1314,8 @@ body.orders-page .saved-order {
 		line-height: 1.2;
 		white-space: nowrap;
 		margin: 0.6mm 0;
-		font-weight: 400;
+		font-weight: 800;
+		text-transform: uppercase;
 	}
 
 	.print-ticket-meta strong,
@@ -1326,7 +1327,8 @@ body.orders-page .saved-order {
 		margin: 1.2mm 0;
 		padding: 0.85mm 0;
 		font-size: 16px !important;
-		font-weight: 400;
+		font-weight: 800;
+		text-transform: uppercase;
 		border-top: 1px solid #000;
 		border-bottom: 1px solid #000;
 	}
@@ -1366,7 +1368,8 @@ body.orders-page .saved-order {
 	.print-ticket-item-name {
 		display: block;
 		font-size: 22px !important;
-		font-weight: 500;
+		font-weight: 800;
+		text-transform: uppercase;
 		white-space: normal;
 		overflow-wrap: anywhere;
 		word-break: break-word;
@@ -1394,8 +1397,10 @@ body.orders-page .saved-order {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	color: var(--muted);
-	font-size: 16px !important;
+		color: #000;
+		font-size: 16px !important;
+		font-weight: 800;
+		text-transform: uppercase;
 	flex: 0 0 auto;
 }
 
@@ -1512,9 +1517,10 @@ body.orders-page .saved-order {
 
 	.receipt-line strong {
 		font-size: 15px !important;
-		font-weight: 700;
+		font-weight: 800;
 		margin-bottom: 0;
 		white-space: nowrap;
+		text-transform: uppercase;
 	}
 
 	.receipt-line span,
@@ -1522,6 +1528,8 @@ body.orders-page .saved-order {
 		font-size: 12px !important;
 		color: #000;
 		white-space: nowrap;
+		font-weight: 800;
+		text-transform: uppercase;
 	}
 
 	.receipt-line > div:last-child {

@@ -1,5 +1,183 @@
 [
   {
+    "id": "1780842510856-70d633ded890a8",
+    "orderNumber": 5,
+    "customerFirstName": "luca",
+    "tableNumber": "12",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -3.8,
+    "total": 3.8,
+    "createdAt": "2026-06-07T14:28:30.856Z",
+    "lines": [
+      {
+        "id": "1780842504220-1955259f4df558",
+        "itemId": "insalata-pomodori",
+        "itemName": "Insalata Pomodori",
+        "itemPrice": 3.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842504747-99c758646aefc",
+        "itemId": "pane",
+        "itemName": "Pane",
+        "itemPrice": 0.3,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780842496364-31c4317ced06a",
+    "orderNumber": 4,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -14,
+    "total": 14,
+    "createdAt": "2026-06-07T14:28:16.364Z",
+    "lines": [
+      {
+        "id": "1780842492926-ee7ffb098ba24",
+        "itemId": "insalata-pomodori",
+        "itemName": "Insalata Pomodori",
+        "itemPrice": 3.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842493474-1d71fe1ecc5fd8",
+        "itemId": "formaggi-misti",
+        "itemName": "Formaggi Misti",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842494228-b6ce3770468a9",
+        "itemId": "ketchup-maionese",
+        "itemName": "Ketchup o Maionese",
+        "itemPrice": 0.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842494998-281825de777fd",
+        "itemId": "coca-cola-litro",
+        "itemName": "Coca Cola 1 L",
+        "itemPrice": 4,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780842443781-9c7a948c7fdc8",
+    "orderNumber": 3,
+    "customerFirstName": "",
+    "tableNumber": "",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -12.5,
+    "total": 12.5,
+    "createdAt": "2026-06-07T14:27:23.781Z",
+    "lines": [
+      {
+        "id": "1780842441148-72c0a9c881795",
+        "itemId": "insalata-pomodori",
+        "itemName": "Insalata Pomodori",
+        "itemPrice": 3.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842441798-3edc7eb0375558",
+        "itemId": "grigliata-mista",
+        "itemName": "Grigliata Mista",
+        "itemPrice": 8.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842442308-2097d069387ca8",
+        "itemId": "ketchup-maionese",
+        "itemName": "Ketchup o Maionese",
+        "itemPrice": 0.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "id": "1780842348661-fbd0a5818a6e18",
+    "orderNumber": 2,
+    "customerFirstName": "luca",
+    "tableNumber": "12",
+    "customerLastName": "",
+    "cashReceived": 0,
+    "change": -21.5,
+    "total": 21.5,
+    "createdAt": "2026-06-07T14:25:48.661Z",
+    "lines": [
+      {
+        "id": "1780842338114-dd4b9949065a28",
+        "itemId": "ketchup-maionese",
+        "itemName": "Ketchup o Maionese",
+        "itemPrice": 0.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842338707-a296a162acdf9",
+        "itemId": "cotechino-pane",
+        "itemName": "Cotechino + Pane",
+        "itemPrice": 4,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842339295-2dd3ff0d125d",
+        "itemId": "formaggi-misti",
+        "itemName": "Formaggi Misti",
+        "itemPrice": 6,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842340013-71d58c2a3029b",
+        "itemId": "insalata-pomodori",
+        "itemName": "Insalata Pomodori",
+        "itemPrice": 3.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      },
+      {
+        "id": "1780842341127-acd15cd5a0246",
+        "itemId": "margherita-doppia",
+        "itemName": "Margherita DP Mozz.",
+        "itemPrice": 7.5,
+        "quantity": 1,
+        "removeIngredients": [],
+        "notes": ""
+      }
+    ]
+  },
+  {
     "id": "1780757831399-fa246bebf88178",
     "orderNumber": 1,
     "customerFirstName": "",
